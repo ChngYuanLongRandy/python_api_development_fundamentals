@@ -33,8 +33,7 @@ class RecipeListResource(Resource):
 # these methods are defined for localhost:5000/recipes/<int>
 class RecipeResource(Resource):
     def get(self, recipe_id):
-        recipe = next((recipe for recipe in recipe_list if \
-            recipe.id == recipe_id and recipe.is_publish == True), None)
+        recipe = next((recipe for recipe in recipe_list if recipe.id == recipe_id and recipe.is_publish == True), None)
         
         if recipe is None:
             return{'message':'recipe is not found'}, HTTPStatus.NOT_FOUND
@@ -43,8 +42,7 @@ class RecipeResource(Resource):
 
     def put(self, recipe_id):
         data = request.get_json()
-        recipe = next((recipe for recipe in recipe_list if \
-            recipe.id == recipe_id and recipe.is_publish == True), None)
+        recipe = next((recipe for recipe in recipe_list if recipe.id == recipe_id), None)
         
         if recipe is None:
             return{'message':'recipe is not found'}, HTTPStatus.NOT_FOUND
@@ -63,8 +61,7 @@ class RecipeResource(Resource):
 # both in localhost:5000/recipes/<int> 
 class RecipePublic(Resource):
     def put(self, recipe_id):
-        recipe = next((recipe for recipe in recipe_list if \
-            recipe.id == recipe_id and recipe.is_publish == True), None)
+        recipe = next((recipe for recipe in recipe_list if recipe.id == recipe_id), None)
         
         if recipe is None:
             return{'message':'recipe is not found'}, HTTPStatus.NOT_FOUND
@@ -74,8 +71,7 @@ class RecipePublic(Resource):
         return {}, HTTPStatus.NO_CONTENT
 
     def delete(self, recipe_id):
-        recipe = next((recipe for recipe in recipe_list if \
-            recipe.id == recipe_id and recipe.is_publish == True), None)
+        recipe = next((recipe for recipe in recipe_list if recipe.id == recipe_id), None)
         
         if recipe is None:
             return{'message':'recipe is not found'}, HTTPStatus.NOT_FOUND
