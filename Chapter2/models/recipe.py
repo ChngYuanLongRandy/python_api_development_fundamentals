@@ -20,6 +20,16 @@ class Recipe:
         self.num_of_servings = num_of_servings
         self.cook_time = cook_time
         self.directions = directions
+        # by default the recipe is set to 'draft', i.e it is not published
         self.is_publish = False
-
-
+    
+    @property
+    def data(self):
+        return {
+            'id': self.id,
+            'name': self.name,
+            'description': self.description,
+            'num_of_servings': self.num_of_servings,
+            'cook_time': self.cook_time,
+            'directions': self.directions        
+        }
