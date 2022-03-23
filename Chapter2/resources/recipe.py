@@ -66,7 +66,7 @@ class RecipePublic(Resource):
         if recipe is None:
             return{'message':'recipe is not found'}, HTTPStatus.NOT_FOUND
 
-        recipe.is_publish == True
+        recipe.is_publish = True
 
         return {}, HTTPStatus.NO_CONTENT
 
@@ -76,6 +76,6 @@ class RecipePublic(Resource):
         if recipe is None:
             return{'message':'recipe is not found'}, HTTPStatus.NOT_FOUND
 
-        recipe.is_publish == False
+        recipe.is_publish = False
 
         return {}, HTTPStatus.NO_CONTENT
